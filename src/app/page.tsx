@@ -4,19 +4,36 @@ export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white">
-        <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center opacity-50"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <h1 className="text-5xl font-bold mb-6">Welcome to Victory Kingdom Church</h1>
-          <p className="text-xl mb-8 max-w-2xl">A place where faith grows, community thrives, and lives are transformed through the power of God&apos;s love.</p>
-          <div className="space-x-4">
-            <Link href="/about" className="bg-white text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-              Learn More
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 transition-colors">
-              Visit Us
-            </Link>
-          </div>
+      <section className="relative min-h-screen flex items-center justify-center">
+        {/* Video/GIF Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 bg-black/60 z-10"></div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+            poster="/images/city-poster.jpg"
+          >
+            <source src="/videos/city-background.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8">
+          <h1 className="text-6xl sm:text-7xl font-bold mb-6 tracking-tight">
+            YOU WERE MADE FOR MORE
+          </h1>
+          <p className="text-2xl sm:text-3xl mb-8 font-light">
+            Give us 30 days to prove it
+          </p>
+          <Link
+            href="/about"
+            className="inline-block bg-yellow-500 text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors duration-300"
+          >
+            Start living life with purpose
+          </Link>
         </div>
       </section>
 

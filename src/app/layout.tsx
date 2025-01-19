@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { MainNav } from "../components/MainNav";
 import { Footer } from "../components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+// Primary font for headings and nav
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-poppins',
+});
+
+// Secondary font for body text
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-montserrat',
+});
 
 export const metadata: Metadata = {
   title: "Victory Kingdom Church",
@@ -18,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${poppins.variable} ${montserrat.variable} font-sans`}>
         <div className="min-h-screen flex flex-col">
           <MainNav />
           <main className="flex-1">{children}</main>
