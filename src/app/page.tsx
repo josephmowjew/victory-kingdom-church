@@ -1,89 +1,132 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
+import { motion, Variants } from "framer-motion"
+
+const serviceVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+}
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+}
+
+const services = [
+  {
+    title: "Sunday Service",
+    time: "09:00 AM - 11:00 AM",
+    location: "Main Sanctuary",
+    colorClasses: {
+      bg: "bg-yellow-500",
+      text: "text-yellow-500",
+    },
+    icon: "M12 6v6m0 0v6m0-6h6m-6 0H6"
+  },
+  {
+    title: "Bible Study",
+    time: "Wednesday 7:00 PM",
+    location: "Fellowship Hall",
+    colorClasses: {
+      bg: "bg-blue-500",
+      text: "text-blue-500",
+    },
+    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+  },
+  {
+    title: "Youth Service",
+    time: "Friday 6:30 PM",
+    location: "Youth Center",
+    colorClasses: {
+      bg: "bg-purple-500",
+      text: "text-purple-500",
+    },
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+  }
+]
 
 export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Image Background */}
         <div className="absolute inset-0 w-full h-full z-0">
           <div className="absolute inset-0 bg-black/60 z-1"></div>
-          <Image
-            src="/images/city-poster.png"
-            alt="City background"
-            fill
-            priority
-            className="object-cover"
-            quality={100}
-          />
+          <motion.div
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative w-full h-full"
+          >
+            <Image
+              src="/images/city-poster.png"
+              alt="City background"
+              fill
+              priority
+              className="object-cover"
+              quality={100}
+            />
+          </motion.div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8">
-          
-          
-          
-        </div>
+        
       </section>
 
       {/* Service Times */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           <h2 className="text-4xl font-bold text-center mb-4 font-heading text-gray-900">Join Us in Worship</h2>
           <p className="text-gray-700 text-center mb-16 text-lg max-w-2xl mx-auto">
             Experience the power of community worship and grow in your faith journey with us
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-yellow-500 rounded-lg transform -rotate-3 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative p-8 bg-white rounded-lg shadow-lg transform group-hover:translate-y-[-5px] transition-all duration-300">
-                <div className="text-yellow-500 mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                variants={serviceVariants}
+                className="relative group"
+              >
+                <div className={`absolute inset-0 ${service.colorClasses.bg} rounded-lg transform -rotate-3 group-hover:rotate-0 transition-transform duration-300`}></div>
+                <div className="relative p-8 bg-white rounded-lg shadow-lg transform group-hover:translate-y-[-5px] transition-all duration-300">
+                  <motion.div 
+                    whileHover={{ scale: 1.1 }}
+                    className={`${service.colorClasses.text} mb-4`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={service.icon} />
+                    </svg>
+                  </motion.div>
+                  <h3 className="font-heading font-bold text-xl mb-2 text-center text-gray-900">{service.title}</h3>
+                  <p className="text-gray-700 text-center text-lg font-medium">{service.time}</p>
+                  <div className="mt-4 text-center">
+                    <span className="text-sm text-gray-600 font-medium">{service.location}</span>
+                  </div>
                 </div>
-                <h3 className="font-heading font-bold text-xl mb-2 text-center text-gray-900">Sunday Service</h3>
-                <p className="text-gray-700 text-center text-lg font-medium">09:00 AM - 11:00 PM</p>
-                <div className="mt-4 text-center">
-                  <span className="text-sm text-gray-600 font-medium">Main Sanctuary</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute inset-0 bg-blue-500 rounded-lg transform -rotate-3 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative p-8 bg-white rounded-lg shadow-lg transform group-hover:translate-y-[-5px] transition-all duration-300">
-                <div className="text-blue-500 mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <h3 className="font-heading font-bold text-xl mb-2 text-center text-gray-900">Bible Study</h3>
-                <p className="text-gray-700 text-center text-lg font-medium">Wednesday 7:00 PM</p>
-                <div className="mt-4 text-center">
-                  <span className="text-sm text-gray-600 font-medium">Fellowship Hall</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute inset-0 bg-purple-500 rounded-lg transform -rotate-3 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative p-8 bg-white rounded-lg shadow-lg transform group-hover:translate-y-[-5px] transition-all duration-300">
-                <div className="text-purple-500 mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <h3 className="font-heading font-bold text-xl mb-2 text-center text-gray-900">Youth Service</h3>
-                <p className="text-gray-700 text-center text-lg font-medium">Friday 6:30 PM</p>
-                <div className="mt-4 text-center">
-                  <span className="text-sm text-gray-600 font-medium">Youth Center</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Featured Events */}
