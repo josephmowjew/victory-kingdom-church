@@ -44,7 +44,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="font-heading font-bold text-xl mb-2 text-center text-gray-900">Sunday Service</h3>
-                <p className="text-gray-700 text-center text-lg font-medium">10:00 AM - 12:00 PM</p>
+                <p className="text-gray-700 text-center text-lg font-medium">09:00 AM - 11:00 PM</p>
                 <div className="mt-4 text-center">
                   <span className="text-sm text-gray-600 font-medium">Main Sanctuary</span>
                 </div>
