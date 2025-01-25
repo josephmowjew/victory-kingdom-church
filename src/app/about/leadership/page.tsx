@@ -46,15 +46,15 @@ export default function LeadershipPage() {
                   </div>
                   <Image
                     src="/leadership/pastor-john.jpg"
-                    alt="Pastor John Smith"
+                    alt="Apostle Oscar HoffMeester"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center font-heading">Pastor John Smith</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center font-heading">Apostle Oscar HoffMeester</h3>
                 <p className="text-blue-600 text-lg mb-4 text-center font-medium">Senior Pastor</p>
                 <p className="text-gray-600 text-center leading-relaxed">
-                  With over 20 years of ministry experience, Pastor John leads our congregation with wisdom, compassion, and a deep commitment to God&apos;s Word.
+                  With over 20 years of ministry experience, Apostle Oscar leads our congregation with wisdom, compassion, and a deep commitment to God&apos;s Word.
                 </p>
               </div>
             </div>
@@ -70,12 +70,12 @@ export default function LeadershipPage() {
                   </div>
                   <Image
                     src="/leadership/sarah.jpg"
-                    alt="Sarah Johnson"
+                    alt="PastorDaphne HoffMeester"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center font-heading">Sarah Johnson</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center font-heading">Pastor Daphne HoffMeester</h3>
                 <p className="text-purple-600 text-lg mb-4 text-center font-medium">Worship Director</p>
                 <p className="text-gray-600 text-center leading-relaxed">
                   Sarah brings a passion for worship and musical excellence, leading our congregation in authentic praise and worship experiences.
