@@ -222,16 +222,23 @@ export default function ShopPage() {
             </div>
 
             {/* Sort Options */}
-            <div className="flex justify-center">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as 'price-asc' | 'price-desc' | 'name')}
-                className="px-4 py-2 bg-white rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="name">Sort by Name</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-              </select>
+            <div className="flex justify-center items-center gap-3">
+              <div className="relative">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as 'price-asc' | 'price-desc' | 'name')}
+                  className="w-64 px-6 py-3 bg-white rounded-full shadow-md text-gray-900 font-medium appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
+                >
+                  <option value="name" className="py-2">Sort by Name</option>
+                  <option value="price-asc" className="py-2">Price: Low to High</option>
+                  <option value="price-desc" className="py-2">Price: High to Low</option>
+                </select>
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
 
