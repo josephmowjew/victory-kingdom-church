@@ -1,39 +1,29 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Home() {
   return (
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
-        {/* Video/GIF Background */}
+        {/* Image Background */}
         <div className="absolute inset-0 w-full h-full z-0">
           <div className="absolute inset-0 bg-black/60 z-1"></div>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-            poster="/images/city-poster.png"
-          >
-            <source src="/videos/city-background.mp4" type="video/mp4" />
-          </video>
+          <Image
+            src="/images/city-poster.png"
+            alt="City background"
+            fill
+            priority
+            className="object-cover"
+            quality={100}
+          />
         </div>
 
         {/* Content */}
         <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8">
-          <h1 className="text-6xl sm:text-7xl font-bold mb-6 tracking-tight">
-            YOU WERE MADE FOR MORE
-          </h1>
-          <p className="text-2xl sm:text-3xl mb-8 font-light">
-            Give us 30 days to prove it
-          </p>
-          <Link
-            href="/about"
-            className="inline-block bg-yellow-500 text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors duration-300"
-          >
-            Start living life with purpose
-          </Link>
+          
+          
+          
         </div>
       </section>
 
