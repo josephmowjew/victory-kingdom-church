@@ -20,7 +20,7 @@ const products: Product[] = [
     id: 1,
     name: "Victory Kingdom T-Shirt",
     description: "Comfortable cotton t-shirt with our church logo",
-    price: 24.99,
+    price: 399.99,
     image: "/shop/tshirt.jpg",
     category: "Apparel",
     inStock: true
@@ -29,7 +29,7 @@ const products: Product[] = [
     id: 2,
     name: "Daily Devotional Book",
     description: "365 days of inspiration and biblical wisdom",
-    price: 19.99,
+    price: 299.99,
     image: "/shop/devotional.jpg",
     category: "Books",
     inStock: true
@@ -38,7 +38,7 @@ const products: Product[] = [
     id: 3,
     name: "Worship Album",
     description: "Our latest worship album featuring original songs",
-    price: 14.99,
+    price: 249.99,
     image: "/shop/album.jpg",
     category: "Music",
     inStock: true
@@ -47,7 +47,7 @@ const products: Product[] = [
     id: 4,
     name: "Prayer Journal",
     description: "Beautiful journal for your spiritual journey",
-    price: 12.99,
+    price: 199.99,
     image: "/shop/journal.jpg",
     category: "Books",
     inStock: false
@@ -56,7 +56,7 @@ const products: Product[] = [
     id: 5,
     name: "Church Logo Mug",
     description: "Start your day with coffee and faith",
-    price: 16.99,
+    price: 249.99,
     image: "/shop/mug.jpg",
     category: "Accessories",
     inStock: true
@@ -65,7 +65,7 @@ const products: Product[] = [
     id: 6,
     name: "Bible Study Guide",
     description: "In-depth study guide for spiritual growth",
-    price: 29.99,
+    price: 449.99,
     image: "/shop/bible-study.jpg",
     category: "Books",
     inStock: true
@@ -115,7 +115,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         )}
         <div className="absolute bottom-4 left-4">
           <span className="bg-white/90 text-gray-900 px-4 py-2 rounded-lg font-bold">
-            ${product.price}
+            R{product.price}
           </span>
         </div>
       </div>
