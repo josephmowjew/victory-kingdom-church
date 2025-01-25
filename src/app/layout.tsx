@@ -3,6 +3,8 @@ import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { MainNav } from "../components/MainNav";
 import { Footer } from "../components/Footer";
+import { CartProvider } from "@/contexts/CartContext";
+import { CartButton } from "@/components/CartButton";
 
 // Primary font for headings and nav
 const poppins = Poppins({
@@ -31,11 +33,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${montserrat.variable} font-sans`}>
-        <div className="min-h-screen flex flex-col">
-          <MainNav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <CartProvider>
+          <div className="min-h-screen flex flex-col">
+            <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
+              <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-20">
+                  <div className="flex items-center space-x-8">
+                    <a href="/" className="text-2xl font-bold text-yellow-500">
+                      Victory Kingdom Church
+                    </a>
+                    <MainNav />
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <CartButton />
+                  </div>
+                </div>
+              </div>
+            </header>
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );
